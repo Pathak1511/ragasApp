@@ -1,0 +1,338 @@
+[
+  {
+    "id": 1,
+    "raga_name": "Ahir Bhairav",
+    "reduction": "Gives free relaxed feeling and mitigates dust allergies and skin disease. Good for arthritic conditions",
+    "video": "https://www.youtube.com/watch?v=bUwLHLSoPVw"
+  },
+  {
+    "id": 10,
+    "raga_name": "Ganamurte",
+    "reduction": "Helpful in diabetes",
+    "video": "https://www.youtube.com/watch?v=XjWp4l43yus"
+  },
+  {
+    "id": 11,
+    "raga_name": "Hansadhwani",
+    "reduction": "Energy giving. Provides good thinking, chaitanya. Sarvarogaharini (panacea)",
+    "video": "https://www.youtube.com/watch?v=WxDJsMQCSzQ"
+  },
+  {
+    "id": 12,
+    "raga_name": "Hemavati Bhajan, Sambho Samba",
+    "reduction": "Good for joint and back pain",
+    "video": "https://youtu.be/GhbWLd_YuQc"
+  },
+  {
+    "id": 13,
+    "raga_name": "Hindolam",
+    "reduction": "",
+    "video": "https://www.youtube.com/watch?v=WoMKiQzZxcg"
+  },
+  {
+    "id": 14,
+    "raga_name": "Kapi",
+    "reduction": "Sick patients get over their depression, anxiety. Reduces absent mindedness",
+    "video": "https://www.youtube.com/watch?v=4yv4ea1pFp4"
+  },
+  {
+    "id": 15,
+    "raga_name": "Karaharapriya",
+    "reduction": "Curative for heart disease and nervous irritablility, neurosis, worry and distress.",
+    "video": "https://www.youtube.com/watch?v=z-fmI3ZslS4"
+  },
+  {
+    "id": 16,
+    "raga_name": "Kedaram",
+    "reduction": "Gives energy and removes tension",
+    "video": "https://youtu.be/2uHkPc9JAo4"
+  },
+  {
+    "id": 17,
+    "raga_name": "Keervani",
+    "reduction": "Promotes dhyana (meditation) at mental and physical levels",
+    "video": "https://youtu.be/kAqrppmbQ5U"
+  },
+  {
+    "id": 18,
+    "raga_name": "Kokilam",
+    "reduction": "Helps to prevent stone formation, burning sensations, sleeplessness and anxiety.",
+    "video": "https://www.youtube.com/watch?v=dKMVeZEJjBo"
+  },
+  {
+    "id": 19,
+    "raga_name": "Madhuvarshini",
+    "reduction": "Good for nerves. Cures diseases like slight headache, sleeplessness, and sinus problems.",
+    "video": "https://youtu.be/nMo351735os"
+  },
+  {
+    "id": 2,
+    "raga_name": "Amrutavarshini",
+    "reduction": "Ushana vyathi nasini ( alleviates diseases related to heat",
+    "video": "https://youtu.be/791XwZA9Iyo"
+  },
+  {
+    "id": 20,
+    "raga_name": "Madhyamavati",
+    "reduction": "Clears paralysis, giddiness, pain in legs/hands, etc. and nervous complaints",
+    "video": "https://youtu.be/zhPxN4fo2dU"
+  },
+  {
+    "id": 21,
+    "raga_name": "Malaya Maruta",
+    "reduction": "To awaken someone out of deep sleep",
+    "video": "https://youtu.be/JSQo6NopX5E"
+  },
+  {
+    "id": 22,
+    "raga_name": "Maya Malava Gowla",
+    "reduction": "Counters pollution. It can be called the Gateway to Carnatic music. The history of Camatic music says that the blessed musician, Purandaradasar.",
+    "video": "https://youtu.be/zGrDSEDeCI0"
+  },
+  {
+    "id": 23,
+    "raga_name": "Bhajan, Inner Self",
+    "reduction": "Mayamalava gowla. This raga has the power to neutralize toxins in the body. Practicing it in the early hours of the morning, in the midst of nature will enhance the strength of the vocal chords.",
+    "video": "https://youtu.be/ti59Fa_ACO0"
+  },
+  {
+    "id": 24,
+    "raga_name": "Mohana Bhajan, Ishapathisha",
+    "reduction": "Mohana is present where beauty and love coexist. It filters out the ill-effects of kama (desire for sex) , krodha (anger) and moha (lust), bestowing immense benefits on the listener. Also said to sures chronic headaches, indigestion, and depression.",
+    "video": "https://youtu.be/cOp3fKdg-uI"
+  },
+  {
+    "id": 25,
+    "raga_name": "Neelambari",
+    "reduction": "To get rid of insomnia",
+    "video": "https://youtu.be/jFbJQJO_8xY"
+  },
+  {
+    "id": 26,
+    "raga_name": "Ranjani",
+    "reduction": "Cures kidney disease",
+    "video": "https://youtu.be/y087sWig3X8"
+  },
+  {
+    "id": 27,
+    "raga_name": "Rathipathipriya",
+    "reduction": "Counters pollution. It can be called the Gateway to Carnatic music. The history of Camatic music says that the blessed musician, Purandaradasar, introduced the system of",
+    "video": "https://youtu.be/xkCaOnOMCCc"
+  },
+  {
+    "id": 28,
+    "raga_name": "Rohini",
+    "reduction": "Cures back pain, joint pain, etc.",
+    "video": "https://youtube.com/shorts/vEOqrm0AzH0?feature=share"
+  },
+  {
+    "id": 29,
+    "raga_name": "Sama",
+    "reduction": "Makes mind sober, tranquil, induces good sleep. Good for world peace.",
+    "video": "https://www.youtube.com/watch?v=pBcget-YvnY"
+  },
+  {
+    "id": 3,
+    "raga_name": "Ananda Bhairavi",
+    "reduction": "Supresses stomach pain in both men and women. Reduces kidney type problems. Controls blood pressure",
+    "video": "https://youtu.be/gfauXw0QGI4"
+  },
+  {
+    "id": 30,
+    "raga_name": "Saramati Bhajan",
+    "reduction": "Elevates from depressed state. Cures balagraha dosham in children ( undiagnoses crying and imitability). For sleeplessness, itching, eye and ear problems, skin problems, and the problems of hearing irregular sounds",
+    "video": "https://youtu.be/NkgJqDaaK6o"
+  },
+  {
+    "id": 31,
+    "raga_name": "Sindu Bhairavi",
+    "reduction": "Removes sins and sorrows and saves from unforesenn events",
+    "video": "https://youtu.be/ciRoR0CF0FI"
+  },
+  {
+    "id": 32,
+    "raga_name": "Sivaranjani",
+    "reduction": "Powerful raga for meditation; bestows benevolence of God. Removes sadness, ushana roga santi (diseases related to excess heat). Good for general health",
+    "video": "https://youtu.be/6-lDJA01DFk"
+  },
+  {
+    "id": 33,
+    "raga_name": "Sandhya Kalyani",
+    "reduction": "Cures ear, nose and eye diseases. Relieves chronic clods. Gives good sleep and freshness",
+    "video": "https://youtu.be/vNd7-VWS2G4"
+  },
+  {
+    "id": 34,
+    "raga_name": "Shankarabharanam",
+    "reduction": "The power of this raga is incredible. It cures mental illness, soothes the turbulent mind and restores peace and harmony. If rendered with total devotion for a stipulated period, it can cure mental disorders said to be beyond the scope of medical treatment. It also is said to have the power to shower wealth.",
+    "video": "https://youtu.be/aJsywTs7Vuk"
+  },
+  {
+    "id": 35,
+    "raga_name": "Shanmugapriya",
+    "reduction": "Sharpens the intellect of the singer as well as the listener. Instills courage in one's mind and replenishes the energy in the body.",
+    "video": "https://www.youtube.com/watch?v=spRQEectgB8"
+  },
+  {
+    "id": 36,
+    "raga_name": "Subhapantuvarali",
+    "reduction": "Alleviates mental dilemmas and indecisiveness",
+    "video": "https://youtu.be/VLpc65y8FWA"
+  },
+  {
+    "id": 37,
+    "raga_name": "Suddha dhanyasi",
+    "reduction": "Remover of sorrows. Gives a happy feeling. Tonic for nerves. Cures rhinitis and migraine.",
+    "video": "https://youtu.be/mnk00oe3fPA"
+  },
+  {
+    "id": 38,
+    "raga_name": "Suruti",
+    "reduction": "Mitigates stomach burn, insomnia, fear, disgust",
+    "video": "https://youtu.be/UDO_zSz-q2M"
+  },
+  {
+    "id": 39,
+    "raga_name": "Vakulabharanam",
+    "reduction": "Alleviates asthma, bronchitis, heart disease, depression, skin disease and skin allergy",
+    "video": "https://www.youtube.com/watch?v=_q2rjgC-2C0"
+  },
+  {
+    "id": 4,
+    "raga_name": "Bagesri",
+    "reduction": "Helps in attaining Guru's grace",
+    "video": "https://www.youtube.com/watch?v=sHuyLafiw0g"
+  },
+  {
+    "id": 40,
+    "raga_name": "Varali Bhajan, Nakam Vinayakam",
+    "reduction": "Varali is good for vayu tatva, heart, skin ailments and gastric problems.",
+    "video": "https://www.youtube.com/watch?v=IqYDjp_b4BA"
+  },
+  {
+    "id": 41,
+    "raga_name": "Vasanta / Vasanti",
+    "reduction": "Controls high and low blood pressure, cures heart as well as nervous diseases. Can dear the fog of confusion when a series of medical tests has to be analysed. It heals nervous breakdowns.",
+    "video": "https://www.youtube.com/watch?v=AoArpHKLGMo"
+  },
+  {
+    "id": 42,
+    "raga_name": "Vasantham",
+    "reduction": "Cures paralysis",
+    "video": "https://www.youtube.com/watch?v=AhM3Efgfw_k"
+  },
+  {
+    "id": 43,
+    "raga_name": "Viswambari",
+    "reduction": "General tonic, acts quickly",
+    "video": "https://www.youtube.com/watch?v=eOw9p_Mx5Mg"
+  },
+  {
+    "id": 44,
+    "raga_name": "Yamuna Kalyani",
+    "reduction": "Gives freshness and dynamism",
+    "video": "https://www.youtube.com/watch?v=S0ioBZItZ2A"
+  },
+  {
+    "id": 45,
+    "raga_name": "Raga Pooriya Dhansari (Hamsana",
+    "reduction": "evokes sweet, deep, heavy, cloudy and stable state of mind and prevents acidity",
+    "video": "https://www.youtube.com/watch?v=GtcR4W5UDYM"
+  },
+  {
+    "id": 46,
+    "raga_name": "Raga Bageshri",
+    "reduction": "arouses a feeling of darkness, stability, depths and calmness. This Raga is also used in treatment",
+    "video": "https://www.youtube.com/watch?v=sHuyLafiw0g"
+  },
+  {
+    "id": 47,
+    "raga_name": "Raga Darbari (Darbari Kanada)",
+    "reduction": "is considered very effective in easing tension. It is a late night Raga composed by Tansen for Akbar",
+    "video": "https://www.youtube.com/watch?v=AROV6CQ2W9Y"
+  },
+  {
+    "id": 48,
+    "raga_name": "Raga Todi",
+    "reduction": "give treamendous relief to patients of high blood pressure.",
+    "video": "https://www.youtube.com/watch?v=Wjyiv4hwdm0"
+  },
+  {
+    "id": 49,
+    "raga_name": "Raga Ahir Bhairav (Chakravakam",
+    "reduction": "is supposed to sustain chords which automatically brings down blood pressure.",
+    "video": "https://www.youtube.com/watch?v=bUwLHLSoPVw"
+  },
+  {
+    "id": 5,
+    "raga_name": "Bhairavi",
+    "reduction": "Reduces anxiety, pressures,skin, disease, allergies",
+    "video": "https://www.youtube.com/watch?v=sLSv9S9IW4w"
+  },
+  {
+    "id": 50,
+    "raga_name": "Raga Malkauns",
+    "reduction": "helps to cure low blood pressure.",
+    "video": "https://www.youtube.com/watch?v=afkYWf6zC2A"
+  },
+  {
+    "id": 51,
+    "raga_name": "Raga Bhairavi",
+    "reduction": "Provides relief T.B, Cancer, Severe Cold, Phlegm, Sinus, toothache .",
+    "video": "https://www.youtube.com/watch?v=afkYWf6zC2A"
+  },
+  {
+    "id": 52,
+    "raga_name": "Raga Malhar",
+    "reduction": "Useful in the treatment of asthma and sunstroke.",
+    "video": "https://www.youtube.com/watch?v=bjJoYHJ3rDk"
+  },
+  {
+    "id": 53,
+    "raga_name": "Raga Todi",
+    "reduction": "Provides relief from cold and headache.",
+    "video": "https://www.youtube.com/watch?v=Wjyiv4hwdm0"
+  },
+  {
+    "id": 54,
+    "raga_name": "Raga Hindol & Marava",
+    "reduction": "These Ragas are useful in blood purification..",
+    "video": "https://www.youtube.com/watch?v=v73LORmb2iM"
+  },
+  {
+    "id": 56,
+    "raga_name": "Kalyani Bhajan, Jai Jai Ganapa",
+    "reduction": "Gives energy and removes tension and acts as general tonic. Dispels the darkness of fear; Gives motherly comfort and increases confidence. Kalyani means mangalam. Recited with faith and devotion, it is believed to clinch marriage alliances. Many authentic reports exist about the raga's power to destroy fear in many forms: fear of poverty, of love, of power, of ill-health, of death, and so on.",
+    "video": "https://www.youtube.com/watch?v=5SPHap5ia9k"
+  },
+  {
+    "id": 6,
+    "raga_name": "Bhupala",
+    "reduction": "To awaken someone out of deep sleep",
+    "video": "https://www.youtube.com/watch?v=lqWJOJ-kzeQ"
+  },
+  {
+    "id": 7,
+    "raga_name": "Charukesi Bhajan",
+    "reduction": "Shantirastu Pushtirastu, 26th raga in the melakarta scale (parent) of the south Indian classical music. Rejuvenates the mind helping one to age gracefully. It enlivens the singer and listener.",
+    "video": "https://www.youtube.com/watch?v=NmSFZldPjD8"
+  },
+  {
+    "id": 8,
+    "raga_name": "Desh",
+    "reduction": "The suppression of the senses releases a negative force. The process of sublimation needs a spiritual path. Rag Desh can provide that. Its energy gives the listener serenity, peace, inner joy, right valor, universal love and patriotism",
+    "video": "https://www.youtube.com/watch?v=GA8PPBn_s_Q"
+  },
+  {
+    "id": 9,
+    "raga_name": "Dwijavanti",
+    "reduction": "Quells paralysis and sicorders of the mind",
+    "video": "https://www.youtube.com/watch?v=HMPT3G-BunU"
+  },
+  {
+    "id": 57,
+    "raga_name": "Raag Yaman",
+    "reduction": "Healing Raga, Sleep and Beyond",
+    "video": "https://www.youtube.com/watch?v=mJ29lSvRKwk"
+  }
+]
