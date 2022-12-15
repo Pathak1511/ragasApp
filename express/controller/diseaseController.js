@@ -1,10 +1,10 @@
 const { query } = require("express");
-const raga = require("./../model/ragas");
+const disease = require("./../model/disease");
 const AppError = require("./../utils/newAppError");
 const catchAsync = require("./../utils/catchAsync");
 
-exports.getRagas = catchAsync(async (req, res, next) => {
-  const query = raga.find();
+exports.getdisease = catchAsync(async (req, res, next) => {
+  const query = disease.find();
   const ragas = await query;
   if (!ragas) {
     return next(new AppError("No data found", 404));

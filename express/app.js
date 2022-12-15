@@ -3,7 +3,6 @@ const RagaRoutes = require("./routes/ragasRouter");
 const app = express();
 
 app.use(express.json());
-
-app.get("/api", RagaRoutes);
+app.use("/", RagaRoutes);
 
 module.exports = app;

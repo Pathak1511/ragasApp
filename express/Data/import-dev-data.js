@@ -4,18 +4,17 @@ const dotenv = require("dotenv");
 const Ragas = require("../model/ragas");
 const disease = require("../model/disease");
 
-dotenv.config({ path: "config.env" });
-
-const DB = process.env.DATABASE;
+dotenv.config({ path: ".././config.env" });
+const DB = String(process.env.DATABASE);
 
 mongoose.set("strictQuery", false);
 mongoose
   .connect(DB, {
-    useNewUrlParser: true,
     useUnifiedTopology: true,
+    useNewUrlParser: true,
   })
   .then(() => {
-    console.log("Db connection successfull for import and exporting of data");
+    console.log("DB connection successfully");
   });
 
 const ragas = JSON.parse(
@@ -46,10 +45,32 @@ const importDisease = async () => {
   process.exit();
 };
 
+const deleteRagas = async () => {
+  try {
+    await Ragas.deleteMany();
+    console.log("ragas data deleted successfully");
+  } catch (err) {
+    console.log(err);
+  }
+  process.exit();
+};
+
+const deletedisease = async () => {
+  try {
+    await disease.deleteMany();
+    console.log("ragas data deleted successfully");
+  } catch (err) {
+    console.log(err);
+  }
+  process.exit();
+};
+
 if (process.argv[2] === "--importRagas") {
   importRaga();
 } else if (process.argv[2] === "--importdisease") {
   importDisease();
-} else {
-  console.log("no Argument");
+} else if (process.argv[2] === "--deleteRagas") {
+  deleteRagas();
+} else if (process.argv[2] === "--deletedisease") {
+  deletedisease();
 }
