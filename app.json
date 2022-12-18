@@ -20,6 +20,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "togettherapy.ragatherapy",
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
