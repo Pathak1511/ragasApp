@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "App2",
-    "slug": "App2",
+    "name": "Raga Therapy",
+    "slug": "raga-therapy",
+    "description": "Music Therapy App for Diabetes, Blood Pressure and Hypertension",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

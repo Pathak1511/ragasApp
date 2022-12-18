@@ -4,8 +4,11 @@ import {
   View,
   StatusBar,
   TouchableOpacity,
+  TextInput,
+  Dimensions,
+  FlatList,
 } from "react-native";
-import React, { useLayoutEffect, useCallback } from "react";
+import React, { memo, useLayoutEffect, useCallback, useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import * as SplashScreen from "expo-splash-screen";
 import tw from "tailwind-react-native-classnames";
@@ -15,8 +18,53 @@ import {
   NunitoSans_600SemiBold,
   NunitoSans_700Bold,
 } from "@expo-google-fonts/nunito-sans";
+import obj from "./../../Data/Prediction";
+import YoutubeIframe from "react-native-youtube-iframe";
+const dimensionForScreen = Dimensions.get("screen");
 
-const Recommender = ({ navigation }) => {
+function RaagAutoComplete(id, title) {
+  this.id = id;
+  this.title = title;
+}
+
+const Recommender = ({ route, navigation }) => {
+  const [ragasName, ragas] = [
+    route.params.Ragas.ragasName,
+    route.params.Ragas.ragas,
+  ];
+
+  // index is the length of predicted values
+  const [len, setIndex] = useState(0);
+  const [playing, setPlaying] = useState(false);
+  const [playIcon, setPlayIcon] = useState("play");
+  const [selectedItemVal, setSelectedItem] = useState([]);
+  const [clicked, setClicked] = useState(false);
+  const [icons, setIcons] = useState("down");
+  const [ids, setIds] = useState(0);
+  const [selectRagaName, setSelectRagaName] = useState("Select Raga");
+
+  const Alert = () => {
+    alert("No more Song in the queue");
+  };
+
+  const ragasN = new Array();
+  let leng = ragasName.length;
+  for (let i = 0; i < leng; i++) {
+    ragasN.push(new RaagAutoComplete(ragasName[i][0] * 1, ragasName[i][1]));
+  }
+
+  const [data, setData] = useState(ragasN);
+  const onSearch = (txt) => {
+    if (txt !== "") {
+      let tempData = ragasN.filter((item) => {
+        return item.title.toLowerCase().indexOf(txt.toLowerCase()) > -1;
+      });
+      setData(tempData);
+    } else {
+      setData(ragasN);
+    }
+  };
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
@@ -38,7 +86,6 @@ const Recommender = ({ navigation }) => {
   if (!fontsLoaded) {
     return null;
   }
-
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
       {/* Header */}
@@ -63,6 +110,150 @@ const Recommender = ({ navigation }) => {
           </Text>
         </View>
       </View>
+
+      {/* Input */}
+
+      <View style={[tw`px-4 pt-16 relative`]}>
+        {/* Input Container */}
+        <TouchableOpacity
+          onPress={() =>
+            clicked
+              ? setClicked(false) & setIcons("down")
+              : setClicked(true) & setIcons("up")
+          }
+          style={[
+            tw` relative items-center justify-center`,
+            styles.InputContainer,
+          ]}
+        >
+          <Text style={[styles.text3, tw`text-lg`]}>{selectRagaName}</Text>
+          <View
+            style={[
+              tw`w-12 h-12 absolute items-center right-0 pt-1 justify-center rounded-lg`,
+              styles.iconsButton,
+            ]}
+          >
+            <AntDesign name={icons} size={24} color="black" />
+          </View>
+        </TouchableOpacity>
+
+        {/* Suggestion Container */}
+        <View
+          style={[
+            tw`flex rounded-lg absolute top-28 ${!clicked ? "hidden" : "flex"}`,
+            styles.suggestionContainer,
+          ]}
+        >
+          <TextInput
+            onChangeText={(txt) => onSearch(txt)}
+            placeholder="Search"
+            style={[tw`text-center rounded-lg`, styles.searchInput]}
+          />
+          <FlatList
+            data={data}
+            renderItem={({ item, index }) => {
+              return (
+                <TouchableOpacity
+                  onPress={() =>
+                    setClicked(false) &
+                    setIcons("down") &
+                    setIds(obj[item.id].id) &
+                    setSelectedItem(obj[item.id]?.value) &
+                    setSelectRagaName(item.title) &
+                    onSearch("")
+                  }
+                  style={styles.RagaItem}
+                  key={item.id}
+                >
+                  <Text>{item.title}</Text>
+                </TouchableOpacity>
+              );
+            }}
+          />
+        </View>
+      </View>
+
+      {/* Recommended Videos */}
+      <View style={[tw`items-center pt-4`, { height: 530 }]}>
+        <View
+          style={[tw`items-center p-2 shadow-sm rounded-lg`, styles.videoBg]}
+        >
+          <YoutubeIframe
+            height={200}
+            width={dimensionForScreen.width - 60}
+            play={playing}
+            videoId={
+              selectedItemVal.length !== 0
+                ? ragas.ragas[selectedItemVal[len][0]]?.video
+                : ragas.ragas[ids].video
+            }
+            onChangeState={(event) => {
+              if (event === "playing") {
+                setPlayIcon("pausecircle");
+              }
+              if (event === "paused") {
+                setPlayIcon("play");
+              }
+            }}
+          />
+        </View>
+        <Text style={[tw`font-bold text-xl pt-2`]}>
+          {selectedItemVal.length !== 0
+            ? ragas.ragas[selectedItemVal[len][0]].raga_name
+            : ragas.ragas[ids].raga_name}
+        </Text>
+
+        {/* Reduction */}
+        <View style={[tw`mt-2 px-6`]}>
+          <Text
+            style={[tw`font-semibold text-lg text-justify`, styles.fontFam]}
+          >
+            {selectedItemVal.length !== 0
+              ? ragas.ragas[selectedItemVal[len][0]].reduction
+              : ragas.ragas[ids].reduction}
+          </Text>
+        </View>
+      </View>
+
+      {/* Buttons */}
+      <View
+        style={[
+          tw` flex justify-center items-center bottom-32`,
+          styles.buttonPlayPause,
+        ]}
+      >
+        <View
+          style={[
+            tw`flex flex-row justify-between items-center bg-indigo-300 p-4 mt-8 shadow-xl rounded-lg`,
+            styles.videoBg,
+          ]}
+        >
+          <TouchableOpacity
+            onPress={() => (len === 0 ? Alert() : setIndex(len - 1))}
+          >
+            <AntDesign name="stepbackward" size={24} color="black" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[tw`mx-8`]}
+            onPress={() =>
+              playing
+                ? setPlaying(false) & setPlayIcon("play")
+                : setPlaying(true) & setPlayIcon("pausecircle")
+            }
+          >
+            <AntDesign name={playIcon} size={24} color="black" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              len === selectedItemVal.length - 1 || selectedItemVal.length === 0
+                ? Alert()
+                : setIndex(len + 1)
+            }
+          >
+            <AntDesign name="stepforward" size={24} color="black" />
+          </TouchableOpacity>
+        </View>
+      </View>
     </View>
   );
 };
@@ -77,6 +268,9 @@ const styles = StyleSheet.create({
     // paddingTop: StatusBar.currentHeight,
     backgroundColor: "#ffecd2",
   },
+  text2: {
+    fontFamily: "NunitoSans_700Bold",
+  },
   headerbg: {
     backgroundColor: "#ffcf8e",
   },
@@ -84,5 +278,87 @@ const styles = StyleSheet.create({
   icon: {
     marginRight: 20,
     backgroundColor: "#ff9f1c",
+  },
+  autocompleteContainer: {
+    borderWidth: 0,
+    padding: 20,
+  },
+  descriptionContainer: {
+    justifyContent: "center",
+  },
+  itemText: {
+    fontSize: 15,
+    paddingTop: 5,
+    paddingBottom: 5,
+    margin: 2,
+  },
+  infoText: {
+    textAlign: "center",
+    fontSize: 16,
+  },
+  InputContainer: {
+    width: "100%",
+    height: 50,
+    backgroundColor: "#fffdfb",
+    borderRadius: 10,
+    zIndex: 30,
+    borderWidth: 0.8,
+    borderColor: "#8e8e8e",
+    alignSelf: "center",
+  },
+  buttons: {
+    backgroundColor: "#ff9f1c",
+  },
+  text3: {
+    fontFamily: "NunitoSans_600SemiBold",
+    color: "#282828",
+  },
+  videos: {
+    backgroundColor: "#ffc577",
+  },
+  suggestionContainer: {
+    width: "100%",
+    height: 264,
+    elevation: 5,
+    zIndex: 20,
+    backgroundColor: "#fffdfb",
+    borderRadius: 10,
+    borderWidth: 0.4,
+    marginTop: 10,
+    alignSelf: "center",
+  },
+  suggestedButton: {
+    overflow: "visible",
+    borderRadius: 0.2,
+    borderWidth: 0.1,
+    marginVertical: 0.2,
+  },
+  iconsButton: {
+    // marginTop: 2,
+    backgroundColor: "#ff9f1c",
+  },
+  videoBg: {
+    backgroundColor: "#ffcf8e",
+  },
+  searchInput: {
+    borderRadius: 5,
+    borderWidth: 0.5,
+    borderColor: "#8e8e8e",
+    height: 50,
+    width: "90%",
+    alignSelf: "center",
+    marginTop: 20,
+  },
+  RagaItem: {
+    width: "80%",
+    height: 50,
+    borderBottomWidth: 0.2,
+    borderBottomColor: "#8e8e8e",
+    alignSelf: "center",
+    justifyContent: "center",
+  },
+  fontFam: {
+    fontFamily: "NunitoSans_400Regular",
+    lineHeight: 20,
   },
 });
