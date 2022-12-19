@@ -87,7 +87,7 @@ const Diabetes = ({ route, navigation }) => {
           style={[tw`items-center p-2 shadow-sm rounded-lg`, styles.videoBg]}
         >
           <YoutubeIframe
-            height={200}
+            height={208}
             width={dimensionForScreen.width - 60}
             play={playing}
             videoId={disease.diabetes[index].video}
@@ -101,10 +101,11 @@ const Diabetes = ({ route, navigation }) => {
             }}
           />
         </View>
-        <Text style={[tw`font-bold text-xl`]}>
-          {disease.diabetes[index].newid}&nbsp;
-          {disease.diabetes[index].raag}
-        </Text>
+        <View style={[tw`pt-2`]}>
+          <Text style={[tw`font-bold text-xl`]}>
+            {disease.diabetes[index].raag}
+          </Text>
+        </View>
 
         {/* Reduction */}
         <View style={[tw`mt-6 px-6`]}>
@@ -172,6 +173,7 @@ const styles = StyleSheet.create({
   },
   fontFam: {
     fontFamily: "NunitoSans_400Regular",
+    lineHeight: 20,
   },
   text2: {
     fontFamily: "NunitoSans_700Bold",

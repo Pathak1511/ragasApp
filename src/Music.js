@@ -156,7 +156,10 @@ const Music = ({ navigation }) => {
         {/* Box */}
         <View style={[tw`px-4 py-4`]}>
           {/* Diabetes */}
-          <View
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("Diabetes", { Disease: { diabetes } })
+            }
             style={[
               tw`flex flex-row justify-between items-center px-6 rounded-2xl bg-indigo-400 border-solid border-transparent `,
               styles.flatlist,
@@ -165,22 +168,23 @@ const Music = ({ navigation }) => {
             <Text style={[tw`text-lg font-semibold capitalize`, styles.text]}>
               Diabetes
             </Text>
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("Diabetes", { Disease: { diabetes } })
-              }
-            >
+            <View>
               <AntDesign
                 name="arrowright"
                 size={24}
                 color="black"
                 style={[tw`p-1 rounded-xl`, styles.rightarrow]}
               />
-            </TouchableOpacity>
-          </View>
+            </View>
+          </TouchableOpacity>
 
           {/* Hypertension */}
-          <View
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("Hypertension", {
+                Disease: { hypertension },
+              })
+            }
             style={[
               tw`flex flex-row justify-between items-center px-6 rounded-2xl bg-indigo-400 border-solid border-transparent my-2`,
               styles.flatlist,
@@ -189,25 +193,24 @@ const Music = ({ navigation }) => {
             <Text style={[tw`text-lg font-semibold capitalize`, styles.text]}>
               Hypertension
             </Text>
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("Hypertension", {
-                  Disease: { hypertension },
-                })
-              }
-            >
+            <View>
               <AntDesign
                 name="arrowright"
                 size={24}
                 color="black"
                 style={[tw`p-1 rounded-xl`, styles.rightarrow]}
               />
-            </TouchableOpacity>
-          </View>
+            </View>
+          </TouchableOpacity>
 
           {/* Blood Pressure */}
 
-          <View
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("Blood", {
+                Disease: { blood },
+              })
+            }
             style={[
               tw`flex flex-row justify-between items-center px-6 rounded-2xl bg-indigo-400 border-solid border-transparent`,
               styles.flatlist,
@@ -216,21 +219,15 @@ const Music = ({ navigation }) => {
             <Text style={[tw`text-lg font-semibold capitalize`, styles.text]}>
               Blood Pressure
             </Text>
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("Blood", {
-                  Disease: { blood },
-                })
-              }
-            >
+            <View>
               <AntDesign
                 name="arrowright"
                 size={24}
                 color="black"
                 style={[tw`p-1 rounded-xl`, styles.rightarrow]}
               />
-            </TouchableOpacity>
-          </View>
+            </View>
+          </TouchableOpacity>
 
           {/* Recommendation Button */}
           <TouchableOpacity

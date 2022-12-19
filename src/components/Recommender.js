@@ -8,7 +8,7 @@ import {
   Dimensions,
   FlatList,
 } from "react-native";
-import React, { memo, useLayoutEffect, useCallback, useState } from "react";
+import React, { useLayoutEffect, useCallback, useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import * as SplashScreen from "expo-splash-screen";
 import tw from "tailwind-react-native-classnames";
@@ -33,18 +33,35 @@ const Recommender = ({ route, navigation }) => {
     route.params.Ragas.ragas,
   ];
 
-  // index is the length of predicted values
   const [len, setIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [playIcon, setPlayIcon] = useState("play");
-  const [selectedItemVal, setSelectedItem] = useState([]);
+  const [selectedItemVal, setSelectedItem] = useState(obj[10].value);
   const [clicked, setClicked] = useState(false);
   const [icons, setIcons] = useState("down");
-  const [ids, setIds] = useState(0);
+  const [ids, setIds] = useState(obj[10].id);
   const [selectRagaName, setSelectRagaName] = useState("Select Raga");
+  const [currentObj, setCurrentObj] = useState(ragas.ragas[8]);
 
-  const Alert = () => {
-    alert("No more Song in the queue");
+  function findRagas(key) {
+    for (let i = 0; i < ragas.ragas.length; i++) {
+      if (ragas.ragas[i].id === key) {
+        setCurrentObj(ragas.ragas[i]);
+      }
+    }
+  }
+
+  function findItemVal(id) {
+    for (let i = 0; i < obj.length; i++) {
+      if (obj[i].id === id) {
+        setSelectedItem(obj[i].value);
+        findRagas(obj[i].value[0][0]);
+      }
+    }
+  }
+
+  const Alert = (msg) => {
+    alert(`No more Song in the queue ${msg}`);
   };
 
   const ragasN = new Array();
@@ -138,6 +155,7 @@ const Recommender = ({ route, navigation }) => {
         </TouchableOpacity>
 
         {/* Suggestion Container */}
+
         <View
           style={[
             tw`flex rounded-lg absolute top-28 ${!clicked ? "hidden" : "flex"}`,
@@ -157,10 +175,13 @@ const Recommender = ({ route, navigation }) => {
                   onPress={() =>
                     setClicked(false) &
                     setIcons("down") &
-                    setIds(obj[item.id].id) &
-                    setSelectedItem(obj[item.id]?.value) &
+                    setIds(item.id) &
+                    findItemVal(item.id) &
                     setSelectRagaName(item.title) &
-                    onSearch("")
+                    onSearch("") &
+                    (len !== 0)
+                      ? setIndex(len)
+                      : setIndex(0)
                   }
                   style={styles.RagaItem}
                   key={item.id}
@@ -174,6 +195,7 @@ const Recommender = ({ route, navigation }) => {
       </View>
 
       {/* Recommended Videos */}
+
       <View style={[tw`items-center pt-4`, { height: 530 }]}>
         <View
           style={[tw`items-center p-2 shadow-sm rounded-lg`, styles.videoBg]}
@@ -182,11 +204,7 @@ const Recommender = ({ route, navigation }) => {
             height={200}
             width={dimensionForScreen.width - 60}
             play={playing}
-            videoId={
-              selectedItemVal.length !== 0
-                ? ragas.ragas[selectedItemVal[len][0]]?.video
-                : ragas.ragas[ids].video
-            }
+            videoId={currentObj?.video}
             onChangeState={(event) => {
               if (event === "playing") {
                 setPlayIcon("pausecircle");
@@ -197,25 +215,21 @@ const Recommender = ({ route, navigation }) => {
             }}
           />
         </View>
-        <Text style={[tw`font-bold text-xl pt-2`]}>
-          {selectedItemVal.length !== 0
-            ? ragas.ragas[selectedItemVal[len][0]].raga_name
-            : ragas.ragas[ids].raga_name}
-        </Text>
+        <Text style={[tw`font-bold text-xl pt-2`]}>{currentObj.raga_name}</Text>
 
         {/* Reduction */}
+
         <View style={[tw`mt-2 px-6`]}>
           <Text
             style={[tw`font-semibold text-lg text-justify`, styles.fontFam]}
           >
-            {selectedItemVal.length !== 0
-              ? ragas.ragas[selectedItemVal[len][0]].reduction
-              : ragas.ragas[ids].reduction}
+            {currentObj.reduction}
           </Text>
         </View>
       </View>
 
       {/* Buttons */}
+
       <View
         style={[
           tw` flex justify-center items-center bottom-32`,
@@ -229,7 +243,11 @@ const Recommender = ({ route, navigation }) => {
           ]}
         >
           <TouchableOpacity
-            onPress={() => (len === 0 ? Alert() : setIndex(len - 1))}
+            onPress={() =>
+              len === 0
+                ? Alert()
+                : setIndex(len - 1) & findRagas(selectedItemVal[len - 1][0])
+            }
           >
             <AntDesign name="stepbackward" size={24} color="black" />
           </TouchableOpacity>
@@ -245,9 +263,9 @@ const Recommender = ({ route, navigation }) => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() =>
-              len === selectedItemVal.length - 1 || selectedItemVal.length === 0
+              len === selectedItemVal.length - 1
                 ? Alert()
-                : setIndex(len + 1)
+                : setIndex(len + 1) & findRagas(selectedItemVal[len + 1][0])
             }
           >
             <AntDesign name="stepforward" size={24} color="black" />
@@ -265,7 +283,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     marginTop: StatusBar.currentHeight,
-    // paddingTop: StatusBar.currentHeight,
     backgroundColor: "#ffecd2",
   },
   text2: {
@@ -318,7 +335,7 @@ const styles = StyleSheet.create({
   },
   suggestionContainer: {
     width: "100%",
-    height: 264,
+    height: 268,
     elevation: 5,
     zIndex: 20,
     backgroundColor: "#fffdfb",
@@ -334,7 +351,6 @@ const styles = StyleSheet.create({
     marginVertical: 0.2,
   },
   iconsButton: {
-    // marginTop: 2,
     backgroundColor: "#ff9f1c",
   },
   videoBg: {

@@ -80,7 +80,10 @@ const Hypertension = ({ route, navigation }) => {
       {/* Video View */}
       <View style={[tw`items-center pt-16 `]}>
         <View
-          style={[tw`items-center p-2 shadow-sm rounded-lg`, styles.videoBg]}
+          style={[
+            tw`items-center justify-center p-2 bg-indigo-200 rounded-lg`,
+            styles.videoBg,
+          ]}
         >
           <YoutubeIframe
             height={200}
@@ -97,10 +100,11 @@ const Hypertension = ({ route, navigation }) => {
             }}
           />
         </View>
-        <Text style={[tw`font-bold text-xl`]}>
-          {disease.hypertension[index].newid}&nbsp;
-          {disease.hypertension[index].raag}
-        </Text>
+        <View style={[tw`pt-2`]}>
+          <Text style={[tw`font-bold text-xl`]}>
+            {disease.hypertension[index].raag}
+          </Text>
+        </View>
 
         {/* Reduction */}
         <View style={[tw`mt-2 px-6`]}>
@@ -174,6 +178,7 @@ const styles = StyleSheet.create({
   },
   fontFam: {
     fontFamily: "NunitoSans_400Regular",
+    lineHeight: 20,
   },
   text2: {
     fontFamily: "NunitoSans_700Bold",
