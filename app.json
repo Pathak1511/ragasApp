@@ -5,10 +5,10 @@
     "description": "Music Therapy App for Diabetes, Blood Pressure and Hypertension",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/appIcon2.gif",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/appIcon2.gif",
+      "image": "./assets/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,12 +22,12 @@
     "android": {
       "package": "togettherapy.ragatherapy",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/appIcon2.gif",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./assets/appIcon2.gif"
+      "favicon": "./assets/icon.png"
     },
     "extra": {
       "eas": {
