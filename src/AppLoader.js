@@ -5,7 +5,7 @@ import Lottie from "lottie-react-native";
 const AppLoader = () => {
   return (
     <View style={styles.container}>
-      <Lottie source={require("../assets/98194-loading.json")} autoPlay loop />
+      <Lottie source={require("../assets/Apploading.json")} autoPlay loop />
     </View>
   );
 };

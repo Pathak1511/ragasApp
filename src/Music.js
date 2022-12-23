@@ -266,34 +266,35 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    marginTop: StatusBar.currentHeight,
-    // paddingTop: StatusBar.currentHeight,
-    backgroundColor: "#ffecd2",
+    backgroundColor: "#ebf0ec",
   },
   headerbg: {
-    backgroundColor: "#ffcf8e",
+    backgroundColor: "#9cb3a0",
+    paddingTop: StatusBar.currentHeight + 4,
   },
 
   icon: {
     marginRight: 36,
-    backgroundColor: "#ff9f1c",
+    backgroundColor: "#2d5234",
+    color: "#f8f8f8",
   },
   image: {
-    backgroundColor: "#ffcf8e",
+    backgroundColor: "#afc2b3",
     borderBottomLeftRadius: 140,
     borderBottomRightRadius: 30,
     borderTopLeftRadius: 30,
   },
   rightarrow: {
-    backgroundColor: "#ff9f1c",
+    backgroundColor: "#2d5234",
+    color: "#f8f8f8",
   },
   flatlist: {
     borderWidth: 1,
-    backgroundColor: "#ffcf8e",
+    backgroundColor: "#afc2b3",
     paddingVertical: 10,
   },
   button: {
-    backgroundColor: "#ff9f1c",
+    backgroundColor: "#2d5234",
   },
   text: {
     fontFamily: "NunitoSans_400Regular",
@@ -303,6 +304,7 @@ const styles = StyleSheet.create({
   },
   text3: {
     fontFamily: "NunitoSans_600SemiBold",
+    color: "#f8f8f8",
   },
 });
 

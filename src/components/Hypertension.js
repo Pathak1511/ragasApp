@@ -5,6 +5,7 @@ import {
   StatusBar,
   TouchableOpacity,
   Dimensions,
+  ScrollView,
 } from "react-native";
 import React, { useLayoutEffect, useCallback, useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
@@ -25,10 +26,6 @@ const Hypertension = ({ route, navigation }) => {
   const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [playIcon, setPlayIcon] = useState("play");
-
-  const Alert = () => {
-    alert("No more Song in the queue");
-  };
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -79,15 +76,10 @@ const Hypertension = ({ route, navigation }) => {
 
       {/* Video View */}
       <View style={[tw`items-center pt-16 `]}>
-        <View
-          style={[
-            tw`items-center justify-center p-2 bg-indigo-200 rounded-lg`,
-            styles.videoBg,
-          ]}
-        >
+        <View style={[tw`items-center justify-center p-4`, styles.videoBg]}>
           <YoutubeIframe
             height={200}
-            width={dimensionForScreen.width - 60}
+            width={dimensionForScreen.width}
             play={playing}
             videoId={disease.hypertension[index].video}
             onChangeState={(event) => {
@@ -107,52 +99,56 @@ const Hypertension = ({ route, navigation }) => {
         </View>
 
         {/* Reduction */}
-        <View style={[tw`mt-2 px-6`]}>
+        <ScrollView style={[tw`mt-2 py-2 px-6 h-48`]}>
           <Text
-            style={[tw`font-semibold text-lg text-justify`, styles.fontFam]}
+            style={[
+              tw`font-semibold text-lg text-justify pb-6`,
+              styles.fontFam,
+            ]}
           >
             {disease.hypertension[index].reduction}
           </Text>
-        </View>
+        </ScrollView>
       </View>
 
       {/* Buttons */}
-      <View
-        style={[
-          tw` flex justify-center items-center bottom-16`,
-          styles.buttons,
-        ]}
-      >
+      <View style={[tw`absolute w-full bottom-0`]}>
         <View
           style={[
-            tw`flex flex-row justify-between items-center bg-indigo-300 p-4 mt-8 shadow-xl rounded-lg`,
+            tw`flex flex-row p-3 px-12 justify-between items-center`,
             styles.videoBg,
           ]}
         >
+          {index === 0 ? (
+            <View style={[tw`w-8 h-8`]}></View>
+          ) : (
+            <TouchableOpacity
+              style={[tw`w-8 h-8`]}
+              onPress={() => setIndex(index - 1)}
+            >
+              <AntDesign name="stepbackward" size={30} color="#16291a" />
+            </TouchableOpacity>
+          )}
+
+          {/* Playing button */}
           <TouchableOpacity
-            onPress={() => (index > 0 ? setIndex(index - 1) : Alert())}
-          >
-            <AntDesign name="stepbackward" size={24} color="black" />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[tw`mx-8`]}
+            style={[tw`w-12 h-12 `]}
             onPress={() =>
               playing
                 ? setPlaying(false) & setPlayIcon("play")
                 : setPlaying(true) & setPlayIcon("pausecircle")
             }
           >
-            <AntDesign name={playIcon} size={24} color="black" />
+            <AntDesign name={playIcon} size={44} color="#16291a" />
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() =>
-              index < disease.hypertension.length - 1
-                ? setIndex(index + 1)
-                : Alert()
-            }
-          >
-            <AntDesign name="stepforward" size={24} color="black" />
-          </TouchableOpacity>
+
+          {index === disease.hypertension.length - 1 ? (
+            <View style={[tw`w-8 h-8`]}></View>
+          ) : (
+            <TouchableOpacity onPress={() => setIndex(index + 1)}>
+              <AntDesign name="stepforward" size={30} color="#16291a" />
+            </TouchableOpacity>
+          )}
         </View>
       </View>
     </View>
@@ -165,16 +161,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    marginTop: StatusBar.currentHeight,
-    backgroundColor: "#ffecd2",
+    backgroundColor: "#ebf0ec",
   },
   headerbg: {
-    backgroundColor: "#ffcf8e",
+    backgroundColor: "#9cb3a0",
+    paddingTop: StatusBar.currentHeight + 4,
   },
 
   icon: {
     marginRight: 20,
-    backgroundColor: "#ff9f1c",
+    backgroundColor: "#2d5234",
+    color: "#f8f8f8",
   },
   fontFam: {
     fontFamily: "NunitoSans_400Regular",
@@ -184,11 +181,6 @@ const styles = StyleSheet.create({
     fontFamily: "NunitoSans_700Bold",
   },
   videoBg: {
-    backgroundColor: "#ffcf8e",
-  },
-  buttons: {
-    position: "absolute",
-    right: 50,
-    left: 50,
+    backgroundColor: "#afc2b3",
   },
 });

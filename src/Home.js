@@ -1,15 +1,8 @@
 import React, { useLayoutEffect, useCallback } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  StatusBar,
-  Image,
-} from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import * as Animatable from "react-native-animatable";
-import { HomeMain } from "../assets";
+import { Main } from "../assets";
 import { AntDesign } from "@expo/vector-icons";
 import * as SplashScreen from "expo-splash-screen";
 import {
@@ -44,11 +37,11 @@ const Home = ({ navigation }) => {
     <View style={styles.container} onLayout={onLayoutRootView}>
       <View>
         {/* Image */}
-        <View style={[tw`pt-20 px-3 pr-0`, styles.ImageView]}>
+        <View style={[tw`pt-24 px-3 pr-0`, styles.ImageView]}>
           <Animatable.Image
             animation="fadeIn"
             easing="ease-in-out"
-            source={HomeMain}
+            source={Main}
             style={[
               tw`w-full shadow-2xl bg-black brightness-110 contrast-125 z-10`,
               styles.CoverImage,
@@ -61,7 +54,12 @@ const Home = ({ navigation }) => {
             name="dingding"
             style={[tw`text-3xl font-semibold mr-4 `, styles.iconHome]}
           />
-          <Text style={[tw`text-lg font-semibold capitalize`, styles.text]}>
+          <Text
+            style={[
+              styles.text,
+              tw`text-lg font-semibold capitalize text-black`,
+            ]}
+          >
             Where words fail, music speaks !!
           </Text>
         </View>
@@ -89,6 +87,25 @@ const Home = ({ navigation }) => {
           </Animatable.View>
         </TouchableOpacity>
       </View>
+
+      <View
+        style={[
+          tw`absolute w-80 h-80 rounded-full bg-indigo-300 -bottom-40 -left-28 opacity-10`,
+          styles.overlay,
+        ]}
+      ></View>
+      <View
+        style={[
+          tw`absolute w-80 h-80 rounded-full bg-indigo-300 bottom-0 -right-44 opacity-10`,
+          styles.overlay,
+        ]}
+      ></View>
+      <View
+        style={[
+          tw`absolute w-full h-96 rounded-full bg-indigo-300 -top-40 -right-10 opacity-10`,
+          styles.overlay,
+        ]}
+      ></View>
     </View>
   );
 };
@@ -96,31 +113,33 @@ const Home = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // marginTop: StatusBar.currentHeight,
-    backgroundColor: "#ffcf8e",
+    backgroundColor: "#ebf0ec",
   },
-  ImageView: {},
   CoverImage: {
-    height: 440,
+    height: 380,
     resizeMode: "contain",
-    backgroundColor: "#ff9f1c",
+    backgroundColor: "#2d5234",
     borderBottomLeftRadius: 180,
     borderBottomRightRadius: 40,
     borderTopLeftRadius: 20,
   },
   iconHome: {
-    color: "#fb8500",
+    color: "#2d5234",
   },
   flatlist: {
     borderWidth: 1,
-    backgroundColor: "#ffcf8e",
     paddingVertical: 10,
   },
   button: {
-    backgroundColor: "#ff9f1c",
+    backgroundColor: "#2d5234",
   },
   text: {
     fontFamily: "NunitoSans_600SemiBold",
+    color: "#f8f8f8",
+  },
+  overlay: {
+    backgroundColor: "#16291a",
+    zIndex: -20,
   },
 });
 

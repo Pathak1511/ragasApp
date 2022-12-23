@@ -7,6 +7,7 @@ import {
   TextInput,
   Dimensions,
   FlatList,
+  ScrollView,
 } from "react-native";
 import React, { useLayoutEffect, useCallback, useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
@@ -150,7 +151,7 @@ const Recommender = ({ route, navigation }) => {
               styles.iconsButton,
             ]}
           >
-            <AntDesign name={icons} size={24} color="black" />
+            <AntDesign name={icons} size={24} color="#f8f8f8" />
           </View>
         </TouchableOpacity>
 
@@ -197,12 +198,10 @@ const Recommender = ({ route, navigation }) => {
       {/* Recommended Videos */}
 
       <View style={[tw`items-center pt-4`, { height: 530 }]}>
-        <View
-          style={[tw`items-center p-2 shadow-sm rounded-lg`, styles.videoBg]}
-        >
+        <View style={[tw`items-center p-4`, styles.videoBg]}>
           <YoutubeIframe
             height={200}
-            width={dimensionForScreen.width - 60}
+            width={dimensionForScreen.width}
             play={playing}
             videoId={currentObj?.video}
             onChangeState={(event) => {
@@ -219,57 +218,70 @@ const Recommender = ({ route, navigation }) => {
 
         {/* Reduction */}
 
-        <View style={[tw`mt-2 px-6`]}>
+        <ScrollView style={[tw`mt-2 py-2 px-6 h-44`]}>
           <Text
-            style={[tw`font-semibold text-lg text-justify`, styles.fontFam]}
+            style={[
+              tw`font-semibold text-lg text-justify pb-20`,
+              styles.fontFam,
+            ]}
           >
             {currentObj.reduction}
           </Text>
-        </View>
+        </ScrollView>
       </View>
 
       {/* Buttons */}
 
-      <View
-        style={[
-          tw` flex justify-center items-center bottom-32`,
-          styles.buttonPlayPause,
-        ]}
-      >
+      <View style={[tw`absolute w-full bottom-0`, styles.buttonPlayPause]}>
         <View
           style={[
-            tw`flex flex-row justify-between items-center bg-indigo-300 p-4 mt-8 shadow-xl rounded-lg`,
+            tw`flex flex-row p-3 px-12 justify-between items-center `,
             styles.videoBg,
           ]}
         >
+          {len === 0 ? (
+            <View style={[tw`w-8 h-8`]}></View>
+          ) : (
+            <TouchableOpacity
+              onPress={() =>
+                len === 0
+                  ? Alert()
+                  : setIndex(len - 1) & findRagas(selectedItemVal[len - 1][0])
+              }
+              style={[tw`w-8 h-8`]}
+            >
+              <AntDesign name="stepbackward" size={30} color="#16291a" />
+            </TouchableOpacity>
+          )}
+
+          {/* Playing Button */}
           <TouchableOpacity
-            onPress={() =>
-              len === 0
-                ? Alert()
-                : setIndex(len - 1) & findRagas(selectedItemVal[len - 1][0])
-            }
-          >
-            <AntDesign name="stepbackward" size={24} color="black" />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[tw`mx-8`]}
+            style={[tw`w-12 h-12 `]}
             onPress={() =>
               playing
                 ? setPlaying(false) & setPlayIcon("play")
                 : setPlaying(true) & setPlayIcon("pausecircle")
             }
           >
-            <AntDesign name={playIcon} size={24} color="black" />
+            <AntDesign name={playIcon} size={44} color="#16291a" />
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() =>
-              len === selectedItemVal.length - 1
-                ? Alert()
-                : setIndex(len + 1) & findRagas(selectedItemVal[len + 1][0])
-            }
-          >
-            <AntDesign name="stepforward" size={24} color="black" />
-          </TouchableOpacity>
+
+          {/* Right move button */}
+          {len === selectedItemVal.length - 1 ? (
+            <View style={[tw`w-8 h-8`]}></View>
+          ) : (
+            <TouchableOpacity
+              style={[tw`w-8 h-8`]}
+              onPress={() =>
+                len === selectedItemVal.length - 1
+                  ? Alert()
+                  : setIndex(len + 1) & findRagas(selectedItemVal[len + 1][0])
+              }
+              //011627
+            >
+              <AntDesign name="stepforward" size={30} color="#16291a" />
+            </TouchableOpacity>
+          )}
         </View>
       </View>
     </View>
@@ -282,19 +294,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    marginTop: StatusBar.currentHeight,
-    backgroundColor: "#ffecd2",
+    //marginTop: StatusBar.currentHeight,
+    backgroundColor: "#ebf0ec",
   },
   text2: {
     fontFamily: "NunitoSans_700Bold",
   },
   headerbg: {
-    backgroundColor: "#ffcf8e",
+    backgroundColor: "#9cb3a0",
+    paddingTop: StatusBar.currentHeight + 4,
   },
 
   icon: {
     marginRight: 20,
-    backgroundColor: "#ff9f1c",
+    backgroundColor: "#2d5234",
+    color: "#f8f8f8",
   },
   autocompleteContainer: {
     borderWidth: 0,
@@ -316,29 +330,26 @@ const styles = StyleSheet.create({
   InputContainer: {
     width: "100%",
     height: 50,
-    backgroundColor: "#fffdfb",
+    backgroundColor: "#d7e0d9",
     borderRadius: 10,
     zIndex: 30,
     borderWidth: 0.8,
-    borderColor: "#8e8e8e",
+    borderColor: "#111f13",
     alignSelf: "center",
-  },
-  buttons: {
-    backgroundColor: "#ff9f1c",
   },
   text3: {
     fontFamily: "NunitoSans_600SemiBold",
     color: "#282828",
   },
   videos: {
-    backgroundColor: "#ffc577",
+    backgroundColor: "#ccf0f7",
   },
   suggestionContainer: {
     width: "100%",
     height: 268,
     elevation: 5,
     zIndex: 20,
-    backgroundColor: "#fffdfb",
+    backgroundColor: "#d7e0d9",
     borderRadius: 10,
     borderWidth: 0.4,
     marginTop: 10,
@@ -351,15 +362,16 @@ const styles = StyleSheet.create({
     marginVertical: 0.2,
   },
   iconsButton: {
-    backgroundColor: "#ff9f1c",
+    backgroundColor: "#2d5234",
+    color: "#f8f8f8",
   },
   videoBg: {
-    backgroundColor: "#ffcf8e",
+    backgroundColor: "#9cb3a0",
   },
   searchInput: {
     borderRadius: 5,
     borderWidth: 0.5,
-    borderColor: "#8e8e8e",
+    borderColor: "#111f13",
     height: 50,
     width: "90%",
     alignSelf: "center",
@@ -369,7 +381,7 @@ const styles = StyleSheet.create({
     width: "80%",
     height: 50,
     borderBottomWidth: 0.2,
-    borderBottomColor: "#8e8e8e",
+    borderBottomColor: "#111f13",
     alignSelf: "center",
     justifyContent: "center",
   },
