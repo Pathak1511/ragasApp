@@ -165,7 +165,6 @@ const styles = StyleSheet.create({
   },
   headerbg: {
     backgroundColor: "#9cb3a0",
-    paddingTop: StatusBar.currentHeight + 4,
   },
 
   icon: {

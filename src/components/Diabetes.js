@@ -54,10 +54,7 @@ const Diabetes = ({ route, navigation }) => {
     <View style={[styles.container, tw`relative`]} onLayout={onLayoutRootView}>
       {/* Header */}
       <View
-        style={[
-          tw`flex flex-row px-4 py-4 pb-3 shadow-sm rounded-lg`,
-          styles.headerbg,
-        ]}
+        style={[tw`flex flex-row px-4 py-4 pb-3 shadow-sm`, styles.headerbg]}
       >
         <View style={[tw`pr-4`]}>
           <TouchableOpacity onPress={() => navigation.navigate("Music")}>
@@ -166,7 +163,6 @@ const styles = StyleSheet.create({
   },
   headerbg: {
     backgroundColor: "#9cb3a0",
-    paddingTop: StatusBar.currentHeight + 4,
   },
   fontFam: {
     fontFamily: "NunitoSans_400Regular",

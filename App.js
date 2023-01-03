@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Alert, StyleSheet, Text, View } from "react-native";
+import { Alert, StyleSheet, Text, View, StatusBar } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import Home from "./src/Home";
@@ -11,13 +11,10 @@ import Recommender from "./src/components/Recommender";
 
 const Stack = createNativeStackNavigator();
 
-// const AlertWindow = (message) => {
-//   Alert.alert("We are sorry 😣. Issue in fetching data");
-// };
-
 export default function App() {
   return (
     <NavigationContainer>
+      <StatusBar barStyle="light-content" />
       <Stack.Navigator>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Music" component={Music} />

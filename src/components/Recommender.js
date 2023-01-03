@@ -2,11 +2,11 @@ import {
   StyleSheet,
   Text,
   View,
-  StatusBar,
   TouchableOpacity,
   TextInput,
   Dimensions,
   FlatList,
+  StatusBar,
   ScrollView,
 } from "react-native";
 import React, { useLayoutEffect, useCallback, useState } from "react";
@@ -294,7 +294,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    //marginTop: StatusBar.currentHeight,
     backgroundColor: "#ebf0ec",
   },
   text2: {
@@ -302,7 +301,6 @@ const styles = StyleSheet.create({
   },
   headerbg: {
     backgroundColor: "#9cb3a0",
-    paddingTop: StatusBar.currentHeight + 4,
   },
 
   icon: {

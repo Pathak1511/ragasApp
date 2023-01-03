@@ -1,5 +1,12 @@
 import React, { useLayoutEffect, useCallback } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  StatusBar,
+} from "react-native";
 import tw from "tailwind-react-native-classnames";
 import * as Animatable from "react-native-animatable";
 import { Main } from "../assets";
