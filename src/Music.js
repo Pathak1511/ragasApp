@@ -43,7 +43,7 @@ const Music = ({ navigation }) => {
     async function getRagas() {
       try {
         const ragas = await axios.get(
-          "https://talented-ant-necklace.cyclic.app/getRagas",
+         URL_RAGAS,
           {
             headers: {
               Authorization: AUTHORIZATION,
@@ -54,7 +54,7 @@ const Music = ({ navigation }) => {
 
         try {
           const disease = await axios.get(
-            "https://talented-ant-necklace.cyclic.app/getdisease",
+            URL_DISEASE,
             {
               headers: {
                 Authorization: AUTHORIZATION,
