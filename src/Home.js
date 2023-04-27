@@ -1,12 +1,5 @@
-import React, { useLayoutEffect, useCallback } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  Image,
-  StatusBar,
-} from "react-native";
+import React, { useLayoutEffect, useCallback, useState } from "react";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import * as Animatable from "react-native-animatable";
 import { Main } from "../assets";
@@ -16,10 +9,65 @@ import {
   useFonts,
   NunitoSans_600SemiBold,
 } from "@expo-google-fonts/nunito-sans";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
+import { URL_CheckToken } from "@env";
+import { useEffect } from "react";
+import { useIsFocused } from "@react-navigation/native";
 SplashScreen.preventAutoHideAsync();
 
 const Home = ({ navigation }) => {
+  const isFocused = useIsFocused();
+  const [topage, setPage] = useState("Music");
+
+  const checkToken = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem("token");
+      if (Object.keys(JSON.parse(jsonValue)) === 0) {
+        setPage("Signup");
+      } else {
+        if (JSON.parse(jsonValue)?.id === "") {
+          setPage("LoginPage");
+        } else {
+          const user = await axios.post(
+            URL_CheckToken,
+            {
+              id: JSON.parse(jsonValue)?.id,
+            },
+            {
+              headers: {
+                cookie: JSON.parse(jsonValue)?.token,
+              },
+            }
+          );
+          if (user.status === 200) {
+            let dateNot = user.data.date;
+            let expdate = user.data.exp;
+            if (dateNot < expdate) {
+              setPage("Music");
+            } else {
+              setPage("LoginPage");
+            }
+          }
+          if (user?.data?.message === "No user find") {
+            setPage("Signup");
+          } else if (
+            user?.data?.message === "invalid signature" ||
+            user?.data?.message === "jwt expired"
+          ) {
+            setPage("LoginPage");
+          }
+        }
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  useEffect(() => {
+    checkToken();
+  }, [isFocused]);
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
@@ -75,15 +123,15 @@ const Home = ({ navigation }) => {
       {/* Button */}
       <View style={[tw`px-4 flex items-center`]}>
         <TouchableOpacity
-          style={[tw`w-32 h-32 rounded-full`]}
-          onPress={() => navigation.navigate("Music")}
+          style={[tw`w-40 h-40 rounded-sm`]}
+          onPress={() => navigation.navigate(topage)}
         >
           <Animatable.View
             animation="pulse"
             easing="ease-in-out"
             iterationCount="infinite"
             style={[
-              tw` items-center rounded-full border-solid border-transparent `,
+              tw` items-center rounded-xl border-solid border-transparent `,
               styles.flatlist,
               styles.button,
             ]}

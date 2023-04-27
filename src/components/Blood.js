@@ -2,7 +2,6 @@ import {
   StyleSheet,
   Text,
   View,
-  StatusBar,
   TouchableOpacity,
   Dimensions,
   ScrollView,
@@ -52,7 +51,7 @@ const Blood = ({ route, navigation }) => {
     <View style={styles.container} onLayout={onLayoutRootView}>
       {/* Header */}
       <View
-        style={[tw`flex flex-row px-4 py-4 pb-3 shadow-sm`, styles.headerbg]}
+        style={[tw`flex flex-row px-4 py-2 pb-3 shadow-sm`, styles.headerbg]}
       >
         <View style={[tw`pr-4`]}>
           <TouchableOpacity onPress={() => navigation.navigate("Music")}>
@@ -66,7 +65,7 @@ const Blood = ({ route, navigation }) => {
         </View>
         <View style={[tw`w-64 flex justify-center`]}>
           <Text
-            style={[tw`text-xl py-2 font-semibold capitalize`, styles.text2]}
+            style={[tw`text-xl py-1 font-semibold capitalize`, styles.text2]}
           >
             Blood Pressure
           </Text>

@@ -7,17 +7,20 @@ import React, {
 import {
   View,
   Text,
-  StatusBar,
   StyleSheet,
   TouchableOpacity,
   Image,
   Alert,
+  ImageBackground,
+  Dimensions,
+  SafeAreaView,
 } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, Ionicons, FontAwesome } from "@expo/vector-icons";
 import * as Animatable from "react-native-animatable";
 import tw from "tailwind-react-native-classnames";
-import { HomeImg } from "../assets";
+import { HomeImg, HeroImg2, AppIcon } from "../assets";
 import * as SplashScreen from "expo-splash-screen";
+import Bot from "./components/Bot";
 import {
   useFonts,
   NunitoSans_400Regular,
@@ -25,7 +28,8 @@ import {
   NunitoSans_700Bold,
 } from "@expo-google-fonts/nunito-sans";
 import axios from "axios";
-import { AUTHORIZATION } from "@env";
+import { AUTHORIZATION, URL_RAGAS, URL_DISEASE, URL_Logout } from "@env";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import AppLoader from "./AppLoader";
 
 SplashScreen.preventAutoHideAsync();
@@ -38,29 +42,35 @@ const Music = ({ navigation }) => {
   const [ragas, setRagas] = useState([]);
   const [disease, setDisease] = useState([]);
   const [loadingState, setLoadingState] = useState(false);
+  const [hideBot, sethideBot] = useState("none");
+
+  const logout = () => {
+    const value = {
+      token: "",
+      disease: "",
+      id: "",
+    };
+    AsyncStorage.setItem("token", JSON.stringify(value));
+    navigation.navigate("Home");
+    //await axios.get(URL_Logout);
+  };
 
   useEffect(() => {
     async function getRagas() {
       try {
-        const ragas = await axios.get(
-          "https://talented-ant-necklace.cyclic.app/getRagas",
-          {
-            headers: {
-              Authorization: AUTHORIZATION,
-            },
-          }
-        );
+        const ragas = await axios.get(URL_RAGAS, {
+          headers: {
+            Authorization: AUTHORIZATION,
+          },
+        });
         setRagas(ragas.data);
 
         try {
-          const disease = await axios.get(
-            "https://talented-ant-necklace.cyclic.app/getdisease",
-            {
-              headers: {
-                Authorization: AUTHORIZATION,
-              },
-            }
-          );
+          const disease = await axios.get(URL_DISEASE, {
+            headers: {
+              Authorization: AUTHORIZATION,
+            },
+          });
           setDisease(disease.data);
 
           setLoadingState(true);
@@ -123,10 +133,26 @@ const Music = ({ navigation }) => {
     }
 
     return (
-      <View style={styles.container} onLayout={onLayoutRootView}>
+      <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
         {/* Header */}
+
+        <ImageBackground
+          style={{
+            height: Dimensions.get("window").height,
+            position: "absolute",
+            width: "100%",
+            zIndex: 8,
+            display: hideBot,
+          }}
+        >
+          <Bot />
+        </ImageBackground>
+
         <View
-          style={[tw`flex flex-row px-4 py-4 pb-3 shadow-sm`, styles.headerbg]}
+          style={[
+            tw`flex flex-row justify-between items-center px-4 py-2 pb-3 shadow-sm`,
+            styles.headerbg,
+          ]}
         >
           <TouchableOpacity onPress={() => navigation.navigate("Home")}>
             <AntDesign
@@ -136,25 +162,45 @@ const Music = ({ navigation }) => {
               style={[tw`p-2 rounded-3xl`, styles.icon]}
             />
           </TouchableOpacity>
+
           <Text
-            style={[tw`text-xl py-2 font-semibold capitalize`, styles.text2]}
+            style={[tw`text-xl py-1 font-semibold capitalize`, styles.text2]}
           >
-            Music Recommendation
+            Raga Realm
           </Text>
+
+          <View>
+            <TouchableOpacity
+              style={tw`flex-row items-center`}
+              onPress={() => {
+                logout();
+              }}
+            >
+              {/* <Text
+                style={[
+                  tw`text-lg py-1 px-2 font-medium capitalize`,
+                  styles.text2,
+                ]}
+              >
+                Sign out
+              </Text> */}
+              <FontAwesome name="sign-out" size={26} color="#2d5234" />
+            </TouchableOpacity>
+          </View>
         </View>
         {/* Image */}
         <View style={[tw`flex justify-center items-center py-1`]}>
           <Image
             source={HomeImg}
             style={[
-              tw`w-80 h-80 rounded-lg  brightness-110 contrast-125`,
+              tw`w-72 h-72 rounded-lg  brightness-110 contrast-125 `,
               styles.image,
             ]}
           />
         </View>
 
         {/* Box */}
-        <View style={[tw`px-4 py-4`]}>
+        <View style={[tw`px-4 py-2`]}>
           {/* Diabetes */}
           <TouchableOpacity
             onPress={() =>
@@ -237,7 +283,7 @@ const Music = ({ navigation }) => {
               })
             }
             style={[
-              tw`items-center px-6 rounded-2xl mt-10 border-solid border-transparent `,
+              tw`items-center px-6 rounded-2xl mt-7 border-solid border-transparent `,
               styles.flatlist,
               styles.button,
             ]}
@@ -254,15 +300,49 @@ const Music = ({ navigation }) => {
               </Text>
             </Animatable.View>
           </TouchableOpacity>
+
+          <View
+            style={[
+              tw`flex flex-row justify-end items-center pl-4 my-4 mx-4 rounded-full ${
+                hideBot == "none" ? "bg-indigo-200" : ""
+              } z-30 ${hideBot == "none" ? "" : ""}`,
+            ]}
+          >
+            <Animatable.Text
+              animation="bounceInRight"
+              style={[tw`px-4 ${hideBot == "none" ? "" : "hidden"}`]}
+            >
+              Hello! How may I assist you?
+            </Animatable.Text>
+            <TouchableOpacity
+              onPress={() =>
+                hideBot == "none" ? sethideBot("flex") : sethideBot("none")
+              }
+            >
+              {hideBot == "none" ? (
+                <Image
+                  source={HeroImg2}
+                  style={[tw`rounded-full shadow-lg`, styles.BotLogo]}
+                />
+              ) : (
+                <AntDesign
+                  name="close"
+                  size={32}
+                  color="black"
+                  style={[tw`rounded-full p-2 -bottom-8 bg-indigo-200`]}
+                />
+              )}
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
+      </SafeAreaView>
     );
   } else {
     return <AppLoader />;
   }
 };
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
@@ -304,6 +384,16 @@ const styles = StyleSheet.create({
   text3: {
     fontFamily: "NunitoSans_600SemiBold",
     color: "#f8f8f8",
+  },
+  text4: {
+    fontFamily: "NunitoSans_600SemiBold",
+    color: "#282828",
+  },
+  BotLogo: {
+    width: 50,
+    height: 50,
+    borderColor: "#2d5234",
+    borderWidth: 3,
   },
 });
 
