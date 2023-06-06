@@ -104,7 +104,7 @@ const LoginPage = ({ navigation }) => {
             or
           </Text>
           <TouchableOpacity
-            onPress={() => console.log("Forgot Password")}
+            onPress={() => navigation.navigate("Signup")}
             style={[
               tw`items-center rounded-2xl border-green-900`,
               styles.flatlist,
