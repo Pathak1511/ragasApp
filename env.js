@@ -1,1 +1,15 @@
 
+export const diaglowflow = {
+  type: "service_account",
+  project_id: "ragarecommender-sg9l",
+  private_key_id: "99520e52aa53a7c2c0d5263b11be18c49353f99b",
+  private_key:
+    "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC2LKAjIeliJEJF\ncgNxlYaY8l9XJe/1pFBq3BNmAo5WskqZUQ55zGt3MLBO+wPTFaKVOICPIOJ9ONsd\nEiMCC1JQgyu4AiGj3XSnqLVzd3gI9joBLELrSfMn6OL4+SMXGLxnELs8jx5O5Quq\nnDXQt8eoixgIYGjDaz5DvpY9E5WPTM5nIAT+AqtF4WSQ361/LevgBfxzTEI6PZBI\nxftqEYylT4AsOaodsq6ti6NGM6WLr0FRUOVDYeoxi5x94SRlGDMFKJhWeJwG6UGi\nzFEmZ7CFjrr/6MpA3XrzV0ztFAI5lXYeRmtjtLoKKc2GLkYUHb2+ygSsYSUfHu9j\nlbgEi9FXAgMBAAECggEAO9OS8Ya5ANh8hRbox5v93Gu4YMPeNpL0L+u/WSBcw18A\n/bGvadN2tWlhdUadHmy7/HpWSerYRpxt5PGoWosCSNuS93aHuqtHHKpckKN64aKP\nMQRqo5+hAYnLRE15NyQR91z4yG4N24X/21M6nyVDpfer+FBFB2xIQfIsn7k3RBw8\n0mr0X47iEC4JXT3sTJWg1cgXlzbEzjhsVcdHGVmrB0AIBs3X0inaWSN6QjoBJJuJ\nSPCEsByFmKsaN/UarhVwCe5HV4Ptpyr7looqXV0nzyKEPEzQvy0mRucKP9UjcHZ/\nYoa5poCt+/RdVo+9Ux2huoLCu5JyyjRaN5vsvrNzvQKBgQDY/4C8QVINHsTRm8ov\nYDjPvtqi74fNEsPrtecfYVlNSfvGdBmBLfWglRU7dW2IN/kfWzK9L/DDAMBw0Rds\nODq9AcYqKyCXBYT8v5rrnuSth6epQeIMKdE3/wKBPjyNz/dpNXmYx8fif6dUt0cW\nQNnB407LA7K7jARlKS6a6lfRkwKBgQDW6tDJI2t/SqtLxW/fbI1idQC6Je7im5fA\n0iFYbnTWMTa5KwjGFkA71gidQtts1zECp8DG633iOtSLeo20Nk7VDVSbDMD7Fxd1\nBjy3IynQA6xsxHFdUnrqueO/i87AKukBb9NSKc4c0zkDhelPtE37p0hHL1rd60zH\nBYMXYrKrrQKBgQCOQ4RM5645d9ClczOst7LHUGLaq5smsYTNBebOxe3cJALy6q7F\n6DG+476VyrjSs4+aJRowujtoPRftXseyZXLs8zrN7pRhLncvlRamHvfhZKxg5Raj\nzs6hnYgw33Knro6P5UUhCula70Hu4nGyfzXETZgctQH6vyMqh0NMwRJuDQKBgQDE\n5AqyuohY7YdQu2hqP4Cnmpk38FiRsgms1NVHtqnDMQL5ULuQ/gGKz+LEb+OmKt7z\nl8u8cTG6eDsQLQ508uv1s2i3Q0/ouJb81uH4xXYg47yrSKyy2kVRlUtYyDR5SNZ+\nQnxO4Y26SqgI2j2Mj5qB2hcVYATXGiIUkrAuVHVrYQKBgBmc9oarijmy9M4u96S2\nxB0ykS0jS7MHA4z8SHjADAk4aPtmJU02UhJ+wAB1Qzcei8maOkGUAZfmydHpg538\nndGKucOrNP4l0lC6TWrim6NtGQuBtaWuVaZ5IST+UxrKthK0R35yB4YIFOcVO+qS\n6D3GkrIEWW0XCylkz9Si1m8J\n-----END PRIVATE KEY-----\n",
+  client_email: "ragatherapy@ragarecommender-sg9l.iam.gserviceaccount.com",
+  client_id: "115115822147491116731",
+  auth_uri: "https://accounts.google.com/o/oauth2/auth",
+  token_uri: "https://oauth2.googleapis.com/token",
+  auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
+  client_x509_cert_url:
+    "https://www.googleapis.com/robot/v1/metadata/x509/ragatherapy%40ragarecommender-sg9l.iam.gserviceaccount.com",
+};
